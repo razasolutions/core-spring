@@ -1,5 +1,8 @@
 package net.raza.core.loaders;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -8,13 +11,13 @@ import org.springframework.stereotype.Component;
 
 import net.raza.core.models.Product;
 import net.raza.core.repositories.ProductRepository;
-
-import java.math.BigDecimal;
+import net.raza.core.services.ProductService;
 
 @Component
 public class ProductLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private ProductRepository productRepository;
+    private ProductService productService;
 
     private Logger log = Logger.getLogger(ProductLoader.class);
 
@@ -22,9 +25,16 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+    
+    @Autowired
+    public void setProductService(ProductService productService) {
+    	this.productService = productService;
+    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
+    	
+    	if (productService.listAllProducts().iterator() != null) {
 
         Product shirt = new Product();
         shirt.setDescription("Spring Framework Guru Shirt");
@@ -43,5 +53,6 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
         productRepository.save(mug);
 
         log.info("Saved Mug - id:" + mug.getId());
+    	}
     }
 }

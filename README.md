@@ -9,7 +9,7 @@
 ###  :: Spring Tool Suite (Eclipse Plug-in)
 ###  :: Tomcat V8
 ###  :: JAutodoc (Eclipse Plug-in)
-###  :: Lombok (Double-click lombok.jar after a mvn install and go to clean the projects)
+###  :: Lombok (Double-click lombok.jar after a mvn install, plug it  to eclipse and then clean the projects)
 
 ## Instructions for use
 
