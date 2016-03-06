@@ -3,16 +3,10 @@ package net.raza.core.models;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Version;
-
-import org.joda.time.DateTimeZone;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import net.raza.core.enums.YesOrNoEnum;
 
 /**
  * 
@@ -25,30 +19,8 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Product implements IBaseEntity<Long>, IBaseAudited {
+public class Product extends AuditedEntity<Long> {
 	
-	// Interface related attributes //
-	
-    /** The entity id, used to bind database relations */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @Version
-    private Integer version;
-    
-    private DateTimeZone createdAt;
-    
-    @ManyToOne
-    private User createdBy;
-    
-    private DateTimeZone updatedAt;
-    
-    @ManyToOne
-    private User updatedBy;
-    
-    
-	/// Specific attributes //
     
     /** The product id, used to uniquely identify a product in logical context */
     private String productId;
@@ -61,5 +33,8 @@ public class Product implements IBaseEntity<Long>, IBaseAudited {
     
     /** The price. */
     private BigDecimal price;
+    
+    /** The active. */
+    private YesOrNoEnum active;
     
 }

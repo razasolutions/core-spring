@@ -21,12 +21,8 @@ import static org.junit.Assert.assertNull;
 @SpringApplicationConfiguration(classes = {RepositoryConfiguration.class})
 public class ProductRepositoryTest {
 
+	@Autowired
     private ProductRepository productRepository;
-
-    @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     @Test
     public void testSaveProduct(){
