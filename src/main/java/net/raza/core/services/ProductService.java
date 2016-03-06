@@ -6,7 +6,7 @@ import net.raza.core.models.Product;
 public interface ProductService {
     Iterable<Product> listAllProducts();
 
-    Product getProductById(Integer id);
+    Product getProductById(Long id);
 
     Product saveProduct(Product product);
 }

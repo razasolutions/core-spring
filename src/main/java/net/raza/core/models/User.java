@@ -1,33 +1,32 @@
 package net.raza.core.models;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Version;
 
 import org.joda.time.DateTimeZone;
+import org.springframework.data.annotation.Version;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * 
- * Product entity. Relative to every item that an @Customer can add to his shopping cart.
+ * User entity. Relative to every person allowed to use and/or manage the system
  * 
- * @author tazabreu
+ * @author Taz
  *
  */
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class Product implements IBaseEntity<Long>, IBaseAudited {
+@EqualsAndHashCode(callSuper = false)
+public class User implements IBaseEntity<Long>, IBaseAudited {
+
 	
-	// Interface related attributes //
+	/// Interface related attributes //
 	
     /** The entity id, used to bind database relations */
     @Id
@@ -51,15 +50,10 @@ public class Product implements IBaseEntity<Long>, IBaseAudited {
 	/// Specific attributes //
     
     /** The product id, used to uniquely identify a product in logical context */
-    private String productId;
+    private String login;
     
-    /** The description. */
-    private String description;
+    private String email;
     
-    /** The image url. */
-    private String imageUrl;
-    
-    /** The price. */
-    private BigDecimal price;
-    
+    private String password;
+
 }

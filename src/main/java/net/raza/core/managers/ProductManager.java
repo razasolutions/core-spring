@@ -23,7 +23,7 @@ public class ProductManager {
     /**
      * Example entity management operation.
      */
-    public BigDecimal checkForDiscounts(Integer productId, String promotionalCode) {
+    public BigDecimal checkForDiscounts(Long productId, String promotionalCode) {
 		
     	Map<String, BigDecimal> activePromotionalCodes = new HashMap<String, BigDecimal>();
     	activePromotionalCodes.put("vip", new BigDecimal("0.1"));

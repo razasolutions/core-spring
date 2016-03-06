@@ -11,6 +11,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
+import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -33,7 +34,7 @@ public class ProductRepositoryTest {
         Product product = new Product();
         product.setDescription("Spring Framework Guru Shirt");
         product.setPrice(new BigDecimal("18.95"));
-        product.setProductId("1234");
+        product.setProductId("1234L");
 
         //save product, verify has ID value after save
         assertNull(product.getId()); //null before save
@@ -67,8 +68,10 @@ public class ProductRepositoryTest {
 
         int count = 0;
 
-        for(Product p : products){
-            count++;
+        Iterator<Product> iterator = products.iterator();
+        while(products.iterator().hasNext()) {
+        	iterator.next();
+        	count++;
         }
 
         assertEquals(count, 1);

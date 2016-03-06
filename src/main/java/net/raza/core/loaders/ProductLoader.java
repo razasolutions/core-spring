@@ -1,7 +1,6 @@
 package net.raza.core.loaders;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
     	
-    	if (productService.listAllProducts().iterator() != null) {
+    	if (!productService.listAllProducts().iterator().hasNext()) {
 
         Product shirt = new Product();
         shirt.setDescription("Spring Framework Guru Shirt");

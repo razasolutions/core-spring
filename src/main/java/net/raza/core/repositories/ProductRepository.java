@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import net.raza.core.models.Product;
 
-public interface ProductRepository extends CrudRepository<Product, Integer>{
+public interface ProductRepository extends CrudRepository<Product, Long>{
 }
