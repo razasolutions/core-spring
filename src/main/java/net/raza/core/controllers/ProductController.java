@@ -28,7 +28,7 @@ public class ProductController {
         
         userService.findAll();
         
-        System.out.println("Returning products:xxx");
+        System.out.println("Returning Products:");
         return "products";
     }
 
