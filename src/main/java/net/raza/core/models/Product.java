@@ -3,6 +3,8 @@ package net.raza.core.models;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,6 +37,7 @@ public class Product extends AuditedEntity<Long> {
     private BigDecimal price;
     
     /** The active. */
+    @Enumerated(EnumType.STRING)
     private YesOrNoEnum active;
     
 }

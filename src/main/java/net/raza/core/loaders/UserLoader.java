@@ -21,7 +21,7 @@ public class UserLoader {
 		if (!userService.findAll().iterator().hasNext()) {
 
 			User superAdmin = new User();
-			superAdmin.setLogin("razaadmin");
+			superAdmin.setUserName("razaadmin");
 			superAdmin.setPassword("razapassword");
 			superAdmin.setRole(RoleEnum.SUPERADMIN);
 			superAdmin.setEmail("superadmin@raza.net");

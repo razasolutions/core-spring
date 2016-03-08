@@ -22,7 +22,7 @@ import net.raza.core.enums.RoleEnum;
 public class User extends BaseEntity<Long> {
 
     /** The product id, used to uniquely identify a product in logical context */
-    private String login;
+    private String userName;
     
     /** The email. */
     private String email;

@@ -1,14 +1,12 @@
 package net.raza.core.models;
 
-import java.sql.Timestamp;
-
-import javax.persistence.EntityListeners;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import org.elasticsearch.common.joda.time.DateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import net.raza.core.interceptors.AuditInterceptor;
 
 /**
  * The Abstract Class BaseEntity. Describes attributes that a persistable entity
@@ -19,19 +17,18 @@ import net.raza.core.interceptors.AuditInterceptor;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@EntityListeners(value = { AuditInterceptor.class })
 @MappedSuperclass
 public abstract class AuditedEntity<T> extends BaseEntity<T> {
 
 	/** The complete date of a registry creation. */
-	private Timestamp createdAt;
+	private DateTime createdAt;
 
 	/** The @User responsible of a registry creation. */
 	@ManyToOne
 	private User createdBy;
 
 	/** The updated at. */
-	private Timestamp updatedAt;
+	private DateTime updatedAt;
 
 	/** The updated by. */
 	@ManyToOne
