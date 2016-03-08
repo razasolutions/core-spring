@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginController {
-    @RequestMapping("/login")
+    @RequestMapping("/public/login")
     String redirect(){
-        return "login";
+        return "public/login";
     }
 }

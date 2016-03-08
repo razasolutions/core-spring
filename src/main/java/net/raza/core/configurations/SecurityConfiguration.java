@@ -21,15 +21,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
         	.authorizeRequests()
-        		.antMatchers("/webjars/**", "/", "/home").permitAll()
+        		.antMatchers("/webjars/**", "/", "/home", "/public/**").permitAll()
+        		.antMatchers("/restricted/**").access("isAuthenticated()")
             	.anyRequest().authenticated()
             	.and()
         	.formLogin()
-            	.loginPage("/login")
+            	.loginPage("/public/login")
             	.permitAll()
             	.and()
         	.logout()
             	.permitAll();
+ 
     }
     
     @Autowired

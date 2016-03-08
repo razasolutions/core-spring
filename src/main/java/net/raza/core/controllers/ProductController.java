@@ -22,40 +22,40 @@ public class ProductController {
 	private UserService userService;
     
 
-    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    @RequestMapping(value = "/public/products", method = RequestMethod.GET)
     public String list(Model model){
         model.addAttribute("products", productService.listAllProducts());
         
         userService.findAll();
         
         System.out.println("Returning Products:");
-        return "products";
+        return "public/products";
     }
 
-    @RequestMapping("product/{id}")
+    @RequestMapping("/restricted/product/{id}")
     public String showProduct(@PathVariable Long id, Model model){
         model.addAttribute("product", productService.getProductById(id));
-        return "productshow";
+        return "restricted/productshow";
     }
 
-    @RequestMapping("product/edit/{id}")
+    @RequestMapping("/restricted/product/edit/{id}")
     public String edit(@PathVariable Long id, Model model){
         model.addAttribute("product", productService.getProductById(id));
-        return "productform";
+        return "restricted/productform";
     }
 
-    @RequestMapping("product/new")
+    @RequestMapping("/restricted/product/new")
     public String newProduct(Model model){
         model.addAttribute("product", new Product());
-        return "productform";
+        return "restricted/productform";
     }
 
-    @RequestMapping(value = "product", method = RequestMethod.POST)
+    @RequestMapping(value = "/restricted/product", method = RequestMethod.POST)
     public String saveProduct(Product product){
 
         productService.saveProduct(product);
 
-        return "redirect:/product/" + product.getId();
+        return "redirect:/restricted/product/" + product.getId();
     }
 
 }

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-    @RequestMapping("/hello")
+    @RequestMapping("/restricted/hello")
     String redirect(){
-        return "hello";
+        return "restricted/hello";
     }
 }
