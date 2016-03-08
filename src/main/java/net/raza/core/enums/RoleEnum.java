@@ -1,5 +1,9 @@
 package net.raza.core.enums;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import lombok.Getter;
 
 /**
@@ -12,19 +16,27 @@ import lombok.Getter;
  */
 public enum RoleEnum {
 
-	SUPERADMIN("enums.role.superadmin"), ADMIN("enums.role.admin"), USER("enums.role.user");
-
+	SUPERADMIN("ROLE_SUPER"), 
+	ADMIN("ROLE_ADMIN"), 
+	USER("ROLE_USER");
 	
-	RoleEnum(String messageCode) {
-		this.messageCode = messageCode;
+	RoleEnum(String role) {
+		this.role = role;
 	}
 	
-	/**
-	 * Gets the message code.
-	 *
-	 * @return the message code
-	 */
 	@Getter
-	private final String messageCode;
+	private final String role;
 
+	public static List<String> getRights(RoleEnum roleEnum){
+		switch (roleEnum.getRole()) {
+		case "ROLE_SUPER":
+			return Arrays.asList("SUPER");
+		case "ROLE_ADMIN":
+			return Arrays.asList("ADMIN");
+		case "ROLE_USER":
+			return Arrays.asList("USER");
+		default:
+			return null;
+		}
+	}
 }

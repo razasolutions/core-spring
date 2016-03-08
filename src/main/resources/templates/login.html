@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-<title>Spring Security Example</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Login</title>
+
+<link rel="stylesheet" type="text/css" href="css/login.css"></link>
 </head>
 <body>
-	<div th:if="${param.error}">Invalid username and password.</div>
-	<div th:if="${param.logout}">You have been logged out.</div>
-	<form th:action="@{/login}" method="post">
-		<input type="hidden" th:name="${_csrf.parameterName}"
-			th:value="${_csrf.token}" />
-		<div>
-			<label> User Name : <input type="text" name="username" />
-			</label>
-		</div>
-		<div>
-			<label> Password: <input type="password" name="password" />
-			</label>
-		</div>
-		<div>
-			<input type="submit" value="Sign In" />
-		</div>
-	</form>
+	<div class="container">
+
+		<form class="form-horizontal" th:action="@{/login}" method="post">
+			<fieldset id="login-fieldset">
+				<input type="hidden" th:name="${_csrf.parameterName}"
+					th:value="${_csrf.token}" />
+				<h2>Core</h2>
+				<div th:if="${param.error}">Invalid username and password.</div>
+				<div th:if="${param.logout}">You have been logged out.</div>
+				
+				<input class="login-input margin-auto-top" placeholder="Login" name="username"/> 
+				<input class="login-input margin-auto-top" placeholder="Password" name="password"
+					type="password" />
+				<button id="login-button" type="submit" class="margin-auto-top">Login</button>
+			</fieldset>
+		</form>
+
+	</div>
 </body>
 </html>

@@ -21,7 +21,7 @@ import net.raza.core.enums.RoleEnum;
 @EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity<Long> {
 
-    /** The product id, used to uniquely identify a product in logical context */
+    /** The user login */
     private String userName;
     
     /** The email. */
@@ -30,10 +30,8 @@ public class User extends BaseEntity<Long> {
     /** The password. */
     private String password;
     
-    /** The role. 
-     *	Defaults to USER, but can be set to another role enumerable whenever desired. 
-     */
+    /** The role. */
     @Enumerated(EnumType.STRING)
-    private RoleEnum role = RoleEnum.USER;
+    private RoleEnum role;
 
 }
