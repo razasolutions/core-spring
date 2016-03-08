@@ -12,7 +12,7 @@ import lombok.Getter;
  */
 public enum YesOrNoEnum {
 
-	ADMIN("enums.yesOrNo.yes", 1, true), NO("enums.yesOrNo.no", 0, false);
+	YES("enums.yesOrNo.yes", 1, true), NO("enums.yesOrNo.no", 0, false);
 
 	/**
 	 * Enum default constructor.
