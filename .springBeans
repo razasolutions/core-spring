@@ -8,9 +8,9 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>java:net.raza.core.SpringBootWebApplication</config>
-		<config>java:net.raza.core.configurations.RepositoryConfiguration</config>
 	</configs>
 	<autoconfigs>
+		<config>java:net.raza.core.configuration.RepositoryConfiguration</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

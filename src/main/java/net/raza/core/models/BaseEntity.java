@@ -1,5 +1,7 @@
 package net.raza.core.models;
 
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,9 +17,14 @@ import lombok.Data;
  */
 @Data
 @MappedSuperclass
-public abstract class BaseEntity<T> {
+public abstract class BaseEntity<T> implements Serializable {
 
-    /** The entity id, used to bind database relations */
+    /**
+	 * Default serial version UID
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/** The entity id, used to bind database relations */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private T id;

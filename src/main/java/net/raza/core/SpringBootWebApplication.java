@@ -13,6 +13,8 @@ import net.raza.core.loaders.EntityLoader;
 @SpringBootApplication
 public class SpringBootWebApplication  extends SpringBootServletInitializer {
 	
+	private static Class<SpringBootWebApplication> applicationClass = SpringBootWebApplication.class;
+
 	@Autowired
 	private EntityLoader entityLoader;
 
@@ -25,11 +27,12 @@ public class SpringBootWebApplication  extends SpringBootServletInitializer {
         return application.sources(applicationClass);
     }
     
+    /**
+     * Used for handling initial data load into a database whenever the application is deployed.
+     */
     @PostConstruct
     public void doEntityLoad() { 
         entityLoader.doLoad();
     }
-
-    private static Class<SpringBootWebApplication> applicationClass = SpringBootWebApplication.class;
     
 }
