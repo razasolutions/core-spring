@@ -79,8 +79,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-
-
 		<!-- ********************************************** -->
 		<!-- Spring Test: starter configuration via Spring Boot -->
 		<!-- ********************************************** -->
@@ -99,7 +97,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
-
 
 		<!-- ********************************************** -->
 		<!-- Bootstrap WebJar: allows for Bootstrap CSS Framework -->

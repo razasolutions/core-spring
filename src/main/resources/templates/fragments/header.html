@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head lang="en">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
@@ -16,8 +17,7 @@
                         <li><a href="#" th:href="@{/restricted/product/new}">Create Product</a></li>
                         <li><a href="#" th:href="@{/restricted/hello}"  th:text="#{core.restricted}">Restricted</a></li>
                         <li><a href="#" th:href="@{/public/login}" th:text="#{core.login}">Log-in</a></li>
-                        <li><a href="#" th:href="@{/}" th:text="#{mensagemPropositalmenteErrada}">Mensagem errada</a></li>
-                        <li sec:authorize="isAuthenticated()"><a href="#" th:href="@{/restricted/hello}" sec:authentication="name">Username</a></li>
+                        <li sec:authorize="isAuthenticated()"><a href="#" th:href="@{/admin/userManagement}">User Management</a></li>
                     </ul>
 
                 </div>

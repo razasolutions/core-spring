@@ -1,0 +1,61 @@
+/* IDs */
+
+#login-button{
+	width: 15em;
+	height: 4em;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#login-fieldset{
+	width: 25em;
+	height: 25em;
+	margin: auto;
+	margin-top:10em;
+	border: 3px solid #000000;
+	text-align: center;
+}
+
+/* Classes */
+
+.login-info{
+	color: red;
+	font-style: italic;
+}
+
+.login-input{
+	width: 80%;
+	height:3em;
+	font-size: 20px;
+}
+
+.margin-auto-top{
+	display: block;
+	margin: auto;
+	margin-top: 2em;
+}
+
+/* Placeholder */
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #ADADAD;
+    font-size: 20px;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #ADADAD;
+   opacity:  1;
+   font-size: 20px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #ADADAD;
+   opacity:  1;
+   font-size: 20px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #ADADAD;
+   font-size: 20px;
+}
+:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+  color:    #ADADAD;
+  font-size: 20px;
+}
