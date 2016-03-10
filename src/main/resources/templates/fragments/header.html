@@ -1,42 +1,37 @@
 <!DOCTYPE html>
-<html 	xmlns:th="http://www.thymeleaf.org"
-		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../css/header.css"></link>
+
 </head>
 <body>
 
-<div class="container">
-    <div th:fragment="header">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" th:href="@{/public/products}">Products</a></li>
-                        <li><a href="#" th:href="@{/restricted/product/new}">Create Product</a></li>
-                        <li><a href="#" th:href="@{/restricted/hello}"  th:text="#{core.restricted}">Restricted</a></li>
-                        <li><a href="#" th:href="@{/public/login}" th:text="#{core.login}">Log-in</a></li>
-                        <li sec:authorize="isAuthenticated()"><a href="#" th:href="@{/admin/userManagement}">User Management</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-
-        <div class="jumbotron">
-            <div class="row text-center">
-                <div class="">
-                    <h2>Core Spring Boot Application</h2>
-
-                    <h3>Spring Boot Web App</h3>
-                </div>
-            </div>
-            <div class="row text-center">
-                A banner should go here.
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container">
+		<div th:fragment="header">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+						<ul class="nav navbar-nav">
+							<li><a href="#" th:href="@{/public/products}">Products</a></li>
+							<li><a href="#" th:href="@{/restricted/product/new}">Create
+									Product</a></li>
+							<li><a href="#" th:href="@{/restricted/hello}"
+								th:text="#{core.restricted}">Restricted</a></li>
+							<li><a href="#" th:href="@{/public/login}"
+								th:text="#{core.login}">Log-in</a></li>
+							<li sec:authorize="isAuthenticated()"><a href="#"
+								th:href="@{/admin/userManagement}">User Management</a></li>
+						</ul>
+					</div>
+					<div sec:authorize="isAuthenticated()" style="float:right">
+						<p sec:authentication="principal.userName"></p>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
 </body>
 </html>

@@ -15,16 +15,20 @@ import lombok.Getter;
  */
 public enum RoleEnum {
 
-	SUPERADMIN("ROLE_SUPER"), 
-	ADMIN("ROLE_ADMIN"), 
-	USER("ROLE_USER");
+	SUPERADMIN("ROLE_SUPER", "role.super"), 
+	ADMIN("ROLE_ADMIN", "role.admin"), 
+	USER("ROLE_USER", "role.user");
 	
-	RoleEnum(String role) {
+	RoleEnum(String role, String key) {
 		this.role = role;
+		this.key = key;
 	}
 	
 	@Getter
 	private final String role;
+	
+	@Getter
+	private final String key;
 
 	public static List<String> getRights(RoleEnum roleEnum){
 		switch (roleEnum.getRole()) {

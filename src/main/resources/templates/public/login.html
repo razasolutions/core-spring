@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:spring="http://www.springframework.org/tags">
 <head lang="en">
 
 <title>Login</title>
@@ -9,16 +10,21 @@
 <body>
 	<div class="container">
 
-		<form class="form-horizontal" th:action="@{/public/login}" method="post">
+		<form class="form-horizontal" th:action="@{/public/login}"
+			method="post">
 			<fieldset id="login-fieldset">
 				<input type="hidden" th:name="${_csrf.parameterName}"
 					th:value="${_csrf.token}" />
 				<h2>Core</h2>
-				<p class="login-info" th:if="${param.error}">Invalid username and password.</p>
-				<p class="login-info" th:if="${param.logout}">You have been logged out.</p>
-				
-				<input class="login-input margin-auto-top" placeholder="Login" name="username"/> 
-				<input class="login-input margin-auto-top" placeholder="Password" name="password"
+				<p class="login-info" th:if="${param.error}">Invalid username
+					and password.</p>
+				<p class="login-info" th:if="${param.logout}">You have been
+					logged out.</p>
+
+				<input class="login-input margin-auto-top" required="required" autofocus="autofocus"
+					th:placeholder="#{user.attr.username}" name="username" />
+				<input class="login-input margin-auto-top" required="required"
+					th:placeholder="#{user.attr.password}" name="password"
 					type="password" />
 				<button id="login-button" type="submit" class="margin-auto-top">Login</button>
 			</fieldset>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en">
+<title th:text="#{user.management.title}"></title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+<link rel="stylesheet" type="text/css" href="../css/usermanagement.css"></link>
+
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+		<!-- User create form -->
+		<div class="div-form">
+			<h2 th:text="#{user.management.form.title}"></h2>
+			<form th:object="${newuser}" th:action="@{/admin/newuser}"
+				method="post">
+				<input type="text" class="newuser-input"
+					th:placeholder="#{user.attr.username}" th:field="*{userName}" />
+				<input type="text" class="newuser-input"
+					th:placeholder="#{user.attr.email}" th:field="*{email}" />
+				<input type="password" class="newuser-input"
+					th:placeholder="#{user.attr.password}" th:field="*{role}" />
+				<ul class="ul-radio">
+					<li
+						th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
+						<input type="radio" th:field="*{role}" th:value="${roletype}" />
+						<label th:text="#{${roletype.key}}"></label>
+					</li>
+				</ul>
+				<button type="submit" class="btn btn-default"
+					th:text="#{core.create}"></button>
+			</form>
+		</div>
+
+		<!-- Users table  -->
+		<div class="div-table">
+			<h4 th:if="${#lists.isEmpty(users)}"
+				th:text="#{user.management.table.empty}"></h4>
+			<div th:if="${not #lists.isEmpty(users)}">
+				<h2 th:text="#{user.management.table.title}"></h2>
+				<table class="table table-striped">
+					<tr>
+						<th th:text="#{user.attr.username}"></th>
+						<th th:text="#{user.attr.email}"></th>
+						<th th:text="#{user.attr.role}"></th>
+					</tr>
+					<tr th:each="user: ${users}">
+						<td th:text="${user.userName}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.role}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

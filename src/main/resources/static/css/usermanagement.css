@@ -1,0 +1,33 @@
+/* Classes */
+
+.div-form {
+	width:30%; 
+	height:100%; 
+	border-right: 2px solid gray; 
+	float:left;
+	text-align:center;
+	display:inline-block;
+}
+
+.div-table {
+	width:65%;
+	height:100%;
+	float:right;
+	display:inline-block;
+}
+
+.newuser-input{
+	width: 80%;
+	height: 3em;
+	margin-bottom: 1em;	
+	border: 1px solid black;
+	font-size: 20px;
+	padding: 5px;
+}
+
+.ul-radio{
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+/* IDs */
