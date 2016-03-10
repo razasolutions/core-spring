@@ -1,12 +1,12 @@
 package net.raza.core.controllers;
 
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,6 +23,7 @@ public class UserController {
     public String list(Model model){
         model.addAttribute("users", userService.findAll());
         model.addAttribute("newUser", new User());
+        model.addAttribute("editUser", new User());
         return "admin/userManagement";
     }
     
@@ -31,4 +32,18 @@ public class UserController {
     	userService.save(newUser);
     	return "redirect:/admin/userManagement";
     }
+    
+    @RequestMapping("/admin/user/{id}")
+    public String showUser(@PathVariable Long id, Model model){
+    	model.addAttribute("editUser", userService.findById(id));
+        return "admin/userManagement2";
+    }
+    
+    
+    @RequestMapping(value = "/admin/editUser", method = RequestMethod.POST)
+    public String editUser(@ModelAttribute("editUser") User editUser){
+    	userService.save(editUser);
+    	return "redirect:/admin/userManagement";
+    }
 }
+

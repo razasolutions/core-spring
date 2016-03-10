@@ -12,50 +12,7 @@
 	<div class="container">
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
-		<!-- User create form -->
-		<div class="div-form">
-			<h2 th:text="#{user.management.form.create}"></h2>
-			<form th:object="${newUser}" th:action="@{/admin/newUser}"
-				method="post">
-				<input type="text" class="newuser-input"
-					th:placeholder="#{user.attr.username}" th:field="*{username}" />
-				<input type="text" class="newuser-input"
-					th:placeholder="#{user.attr.email}" th:field="*{email}" />
-				<input type="password" class="newuser-input"
-					th:placeholder="#{user.attr.password}" th:field="*{password}" />
-				<ul class="ul-radio">
-					<li
-						th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
-						<input type="radio" th:field="*{role}" th:value="${roletype}" />
-						<label th:text="#{${roletype.key}}"></label>
-					</li>
-				</ul>
-				<button type="submit" class="btn btn-default"
-					th:text="#{core.create}"></button>
-			</form>
-		</div>
-
-		<!-- Users table  -->
-		<div class="div-table">
-			<h4 th:if="${#lists.isEmpty(users)}"
-				th:text="#{user.management.table.empty}"></h4>
-			<div th:if="${not #lists.isEmpty(users)}">
-				<h2 th:text="#{user.management.table.title}"></h2>
-				<table class="table table-striped">
-					<tr>
-						<th th:text="#{user.attr.username}"></th>
-						<th th:text="#{user.attr.email}"></th>
-						<th th:text="#{user.attr.role}"></th>
-					</tr>
-					<tr th:each="user: ${users}">
-						<td th:text="${user.username}"></td>
-						<td th:text="${user.email}"></td>
-						<td th:text="${user.role}"></td>
-						<td><a th:href="@{/admin/user/} + ${user.id}">View</a></td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		
 
 		<!-- User View, Edit and Delete dialog -->
 

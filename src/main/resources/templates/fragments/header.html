@@ -22,7 +22,7 @@
 								th:text="#{core.restricted}">Restricted</a></li>
 							<li><a href="#" th:href="@{/public/login}"
 								th:text="#{core.login}">Log-in</a></li>
-							<li sec:authorize="isAuthenticated()"><a href="#"
+							<li sec:authorize="permitAll"><a href="#"
 								th:href="@{/admin/userManagement}">User Management</a></li>
 						</ul>
 					</div>
