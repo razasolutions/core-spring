@@ -20,6 +20,8 @@ import lombok.EqualsAndHashCode;
 @MappedSuperclass
 public abstract class AuditedEntity<T> extends BaseEntity<T> {
 
+	private static final long serialVersionUID = 4013874760995046753L;
+
 	/** The complete date of a registry creation. */
 	private DateTime createdAt;
 

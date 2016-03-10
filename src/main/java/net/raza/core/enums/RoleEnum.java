@@ -11,6 +11,7 @@ import lombok.Getter;
  * Handles a @User privilege set.
  * 
  * @author tazabreu
+ * @author raniere
  * 
  */
 public enum RoleEnum {
@@ -30,14 +31,14 @@ public enum RoleEnum {
 	@Getter
 	private final String key;
 
-	public static List<String> getRights(RoleEnum roleEnum){
+	public static List<String> getAuthorities(RoleEnum roleEnum){
 		switch (roleEnum.getRole()) {
 		case "ROLE_SUPER":
-			return Arrays.asList("SUPER");
+			return Arrays.asList("CREATE", "RETRIEVE", "UPDATE", "DELETE");		// full CRUD authority
 		case "ROLE_ADMIN":
-			return Arrays.asList("ADMIN");
+			return Arrays.asList("CREATE", "RETRIEVE", "UPDATE", "DELETE");		// full CRUD authority
 		case "ROLE_USER":
-			return Arrays.asList("USER");
+			return Arrays.asList("RETRIEVE");		// example of re
 		default:
 			return null;
 		}

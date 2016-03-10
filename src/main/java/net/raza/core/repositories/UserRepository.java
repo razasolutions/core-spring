@@ -6,6 +6,6 @@ import net.raza.core.models.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	public User findByUserName(String userName);
+	public User findByUsername(String username);
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import net.raza.core.enums.RoleEnum;
 import net.raza.core.models.User;
+import net.raza.core.security.RoleAuthorities;
 import net.raza.core.services.UserService;
 
 @Component
@@ -20,10 +21,9 @@ public class UserLoader {
 
 		if (!userService.findAll().iterator().hasNext()) {
 
-			User superAdmin = new User();
-			superAdmin.setUserName("razaadmin");
-			superAdmin.setPassword("razapassword");
-			superAdmin.setRole(RoleEnum.SUPERADMIN);
+			RoleEnum role = RoleEnum.SUPERADMIN;
+			User superAdmin = new User("razaadmin", "razapassword", RoleAuthorities.getAuthorities(role));
+			superAdmin.setRole(role);
 			superAdmin.setEmail("superadmin@raza.net");
 			
 			userService.save(superAdmin);

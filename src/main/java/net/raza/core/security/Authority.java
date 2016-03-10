@@ -4,13 +4,14 @@ import org.springframework.security.core.GrantedAuthority;
 
 import lombok.Getter;
 
-@SuppressWarnings("serial")
-public class CoreAuthority implements GrantedAuthority {
+public class Authority implements GrantedAuthority {
 
+	private static final long serialVersionUID = 8022694174468422445L;
+	
 	@Getter
 	private String authority;
 	
-	public CoreAuthority(String authority){
+	public Authority(String authority){
 		this.authority = authority;
 	}
 
@@ -22,7 +23,7 @@ public class CoreAuthority implements GrantedAuthority {
     @Override
     public boolean equals(Object obj) {
         if(obj == null) return false;
-        if(!(obj instanceof CoreAuthority)) return false;
-        return ((CoreAuthority) obj).getAuthority().equals(authority);
+        if(!(obj instanceof Authority)) return false;
+        return ((Authority) obj).getAuthority().equals(authority);
     }
 }

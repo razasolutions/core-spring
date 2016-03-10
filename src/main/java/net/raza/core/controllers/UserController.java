@@ -1,9 +1,12 @@
 package net.raza.core.controllers;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,13 +22,13 @@ public class UserController {
     @RequestMapping(value = "/admin/userManagement", method = RequestMethod.GET)
     public String list(Model model){
         model.addAttribute("users", userService.findAll());
-        model.addAttribute("newuser", new User());
+        model.addAttribute("newUser", new User());
         return "admin/userManagement";
     }
     
-    @RequestMapping(value = "/admin/newuser", method = RequestMethod.POST)
-    public String newUser(User newuser){
-    	userService.save(newuser);
+    @RequestMapping(value = "/admin/newUser", method = RequestMethod.POST)
+    public String newUser(User newUser){
+    	userService.save(newUser);
     	return "redirect:/admin/userManagement";
     }
 }

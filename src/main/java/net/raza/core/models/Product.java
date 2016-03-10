@@ -23,8 +23,9 @@ import net.raza.core.enums.YesOrNoEnum;
 @EqualsAndHashCode(callSuper=false)
 public class Product extends AuditedEntity<Long> {
 	
-    
-    /** The product id, used to uniquely identify a product in logical context */
+	private static final long serialVersionUID = 1883029063056120422L;
+
+	/** The product id, used to uniquely identify a product in logical context */
     private String productId;
     
     /** The description. */

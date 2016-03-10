@@ -21,7 +21,7 @@ public class SecurityAuthenticationProvider implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-		User user = userService.findByUserName(authentication.getPrincipal().toString());
+		User user = userService.findByUsername(authentication.getPrincipal().toString());
 		if (user == null){
 			//TODO we want exception here?
 			throw new UsernameNotFoundException(String.format("Invalid credentials", authentication.getPrincipal()));
