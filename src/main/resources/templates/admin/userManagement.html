@@ -3,9 +3,13 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head lang="en">
+
 <title th:text="#{user.management.title}"></title>
+
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
-<link rel="stylesheet" type="text/css" href="../css/usermanagement.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/usermanagement.css"
+	th:href="@{/css/usermanagement.css}"></link>
 
 </head>
 <body>
@@ -15,13 +19,13 @@
 		<!-- User create form -->
 		<div class="div-form">
 			<h2 th:text="#{user.management.form.create}"></h2>
-			<form th:object="${newUser}" th:action="@{/admin/newUser}"
+			<form th:object="${newUser}" th:action="@{/admin/userManagement/add}"
 				method="post">
 				<input type="text" class="newuser-input"
-					th:placeholder="#{user.attr.username}" th:field="*{username}" />
-				<input type="text" class="newuser-input"
-					th:placeholder="#{user.attr.email}" th:field="*{email}" />
-				<input type="password" class="newuser-input"
+					th:placeholder="#{user.attr.username}" th:field="*{username}" /> <input
+					type="text" class="newuser-input"
+					th:placeholder="#{user.attr.email}" th:field="*{email}" /> <input
+					type="password" class="newuser-input"
 					th:placeholder="#{user.attr.password}" th:field="*{password}" />
 				<ul class="ul-radio">
 					<li
@@ -46,45 +50,55 @@
 						<th th:text="#{user.attr.username}"></th>
 						<th th:text="#{user.attr.email}"></th>
 						<th th:text="#{user.attr.role}"></th>
+						<th />
 					</tr>
-					<tr th:each="user: ${users}">
+					<tr th:each="user : ${users}">
 						<td th:text="${user.username}"></td>
 						<td th:text="${user.email}"></td>
 						<td th:text="${user.role}"></td>
-						<td><a th:href="@{/admin/user/} + ${user.id}">View</a></td>
+						<td><a href="#"
+							th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='edit')}">Edit</a>
+							<a href="#"
+							th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='view')}">View</a>
+							<a href="#"
+							th:href="@{/admin/userManagement/delete/{id}(id=${user.id})}">Delete</a>
+						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 
-		<!-- User View, Edit and Delete dialog -->
 
 		<div id="userDialog" class="modalDialog">
-			<div style="text-align:center;">
-				<a href="#close" title="Close" class="close">X</a>
-				<h2 th:text="#{user.management.form.edit}"></h2>
-				<form th:object="${editUser}" th:action="@{/admin/editUser}"
-					method="post">
-					<input type="text" class="newuser-input" th:value="${editUser.username}"
+			<div style="text-align: center;">
+				<a href="#close" title="Close" class="close">x</a>
+				<h2
+					th:text="${operation} == 'edit' ? #{user.management.form.edit} : #{user.management.form.view}"></h2>
+				<form th:object="${managedUser}"
+					th:action="@{/admin/userManagement/edit}" method="post">
+					<input type="text" class="newuser-input"
+						th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.username}" th:field="*{username}" />
-					<input type="text" class="newuser-input" th:text="${editUser.email}"
-						th:placeholder="#{user.attr.email}" th:field="*{email}" />
-					<input type="password" class="newuser-input"
+					<input type="text" class="newuser-input"
+						th:readonly="${operation == 'view'}"
+						th:placeholder="#{user.attr.email}" th:field="*{email}" /> <input
+						type="password" class="newuser-input"
+						th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.password}" th:field="*{password}" />
 					<ul class="ul-radio">
 						<li
 							th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
-							<input type="radio" th:field="*{role}" th:value="${roletype}" />
-							<label th:text="#{${roletype.key}}"></label>
+							<input type="radio" th:field="*{role}" th:value="${roletype}"
+							th:disabled="${operation == 'view'}" /> <label
+							th:text="#{${roletype.key}}"></label>
 						</li>
 					</ul>
 					<button type="submit" class="btn btn-default"
-						th:text="#{core.edit}"></button>
+						th:if="${operation == 'edit'}" th:text="#{core.edit}"></button>
 				</form>
 			</div>
 
 		</div>
-
 	</div>
 </body>
 </html>
