@@ -77,18 +77,18 @@
 				<form th:object="${managedUser}"
 					th:action="@{/admin/userManagement/edit}" method="post">
 
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
 					<input type="text" class="newuser-input"
 						th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.username}" th:field="*{username}" />
+
 					<input type="text" class="newuser-input"
 						th:readonly="${operation == 'view'}"
-
 						th:placeholder="#{user.attr.email}" th:field="*{email}" />
+						
 					<input type="password" class="newuser-input"
 						th:if="${operation == 'edit'}"
 						th:placeholder="#{user.attr.password}" th:field="*{password}" />
+						
 					<ul class="ul-radio">
 						<li
 							th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
@@ -97,6 +97,7 @@
 							th:text="#{${roletype.key}}"></label>
 						</li>
 					</ul>
+					
 					<button type="submit" class="btn btn-default"
 						th:if="${operation == 'edit'}" th:text="#{core.edit}"></button>
 				</form>
