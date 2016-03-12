@@ -22,10 +22,10 @@
 			<form th:object="${newUser}" th:action="@{/admin/userManagement/add}"
 				method="post">
 				<input type="text" class="newuser-input"
-					th:placeholder="#{user.attr.username}" th:field="*{username}" /> <input
-					type="text" class="newuser-input"
-					th:placeholder="#{user.attr.email}" th:field="*{email}" /> <input
-					type="password" class="newuser-input"
+					th:placeholder="#{user.attr.username}" th:field="*{username}" />
+				<input type="text" class="newuser-input"
+					th:placeholder="#{user.attr.email}" th:field="*{email}" />
+				<input type="password" class="newuser-input"
 					th:placeholder="#{user.attr.password}" th:field="*{password}" />
 				<ul class="ul-radio">
 					<li
@@ -76,20 +76,23 @@
 					th:text="${operation} == 'edit' ? #{user.management.form.edit} : #{user.management.form.view}"></h2>
 				<form th:object="${managedUser}"
 					th:action="@{/admin/userManagement/edit}" method="post">
+
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 					<input type="text" class="newuser-input"
 						th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.username}" th:field="*{username}" />
 					<input type="text" class="newuser-input"
 						th:readonly="${operation == 'view'}"
-						th:placeholder="#{user.attr.email}" th:field="*{email}" /> <input
-						type="password" class="newuser-input"
+						th:placeholder="#{user.attr.email}" th:field="*{email}" />
+					<input type="password" class="newuser-input"
 						th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.password}" th:field="*{password}" />
 					<ul class="ul-radio">
 						<li
 							th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
 							<input type="radio" th:field="*{role}" th:value="${roletype}"
-							th:disabled="${operation == 'view'}" /> <label
+								th:disabled="${operation == 'view'}" /> <label
 							th:text="#{${roletype.key}}"></label>
 						</li>
 					</ul>

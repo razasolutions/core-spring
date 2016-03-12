@@ -43,7 +43,7 @@ public class UserController {
     	return "redirect:" + PATH + "/userManagement";
     }
     
-    @RequestMapping(value = PATH + "/userManagement/edit/", method = RequestMethod.POST)
+    @RequestMapping(value = PATH + "/userManagement/edit", method = RequestMethod.POST)
     public String editUser(User managedUser){
     	userService.save(managedUser);
     	// TODO: add a success message into Flash context;
