@@ -4,7 +4,6 @@ package net.raza.core.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +44,7 @@ public class UserController {
     
     @RequestMapping(value = PATH + "/userManagement/edit/", method = RequestMethod.POST)
     public String editUser(User managedUser){
-    	userService.save(managedUser);
+    	userService.update(managedUser);
     	// TODO: add a success message into Flash context;
     	// TODO: maybe check for authentication here?
     	return "redirect:" + PATH + "/userManagement";
@@ -62,6 +61,9 @@ public class UserController {
     @RequestMapping(value = PATH + "/userManagement/manage/{id}", method = RequestMethod.GET)
     public String manageUser(@PathVariable Long id, @RequestParam(value = "operation", required = true) String operation, RedirectAttributes redirectAttributes){
     	redirectAttributes.addFlashAttribute("managedUser", userService.findById(id));
+    	if (operation.equals("delete")) {
+    		return "redirect:" + PATH + "/userManagement#deleteDialog";
+    	}
     	redirectAttributes.addFlashAttribute("operation", operation);
     	// TODO: handle modal Dialog opening with a Flash attribute instead of with #userDialog
     	// it's better to handle modal dialog opening via Flash (because of page updating (F5) and back/forward issues).
