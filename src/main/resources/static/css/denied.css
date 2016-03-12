@@ -1,0 +1,18 @@
+/* IDs */
+
+
+
+/* Classes */
+
+.main-div{
+	text-align: center;
+	width: 60%;
+	margin: auto;	
+}
+
+.margin-auto-top{
+	display: block;
+	margin: auto;
+	margin-top: 2em;
+}
+
