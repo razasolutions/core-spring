@@ -34,11 +34,11 @@ public enum RoleEnum {
 	public static List<String> getAuthorities(RoleEnum roleEnum){
 		switch (roleEnum.getRole()) {
 		case "ROLE_SUPER":
-			return Arrays.asList("CREATE", "RETRIEVE", "UPDATE", "DELETE");		// full CRUD authority
+			return Arrays.asList("SUPER");		// full CRUD authority
 		case "ROLE_ADMIN":
-			return Arrays.asList("CREATE", "RETRIEVE", "UPDATE", "DELETE");		// full CRUD authority
+			return Arrays.asList("ADMIN");		// full CRUD authority
 		case "ROLE_USER":
-			return Arrays.asList("RETRIEVE");		// example of re
+			return Arrays.asList("USER");		// example of re
 		default:
 			return null;
 		}
