@@ -8,13 +8,11 @@ public class EntityLoader {
 
 	@Autowired
 	private UserLoader userLoader;
-	@Autowired
-	private ProductLoader productLoader;
 
 	public void load() {
 
 		userLoader.load();
-		productLoader.load();
 		
 	}
 }
+

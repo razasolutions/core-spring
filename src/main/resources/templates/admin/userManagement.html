@@ -21,11 +21,15 @@
 			<h2 th:text="#{user.management.form.create}"></h2>
 			<form th:object="${newUser}" th:action="@{/admin/userManagement/add}"
 				method="post">
-				<input type="text" class="newuser-input"
+				<input type="text" class="newuser-input" pattern=".{4,}"
+					th:title="#{user.attr.username.pattern}" required="required"
 					th:placeholder="#{user.attr.username}" th:field="*{username}" />
 				<input type="text" class="newuser-input"
-					th:placeholder="#{user.attr.email}" th:field="*{email}" />
-				<input type="password" class="newuser-input"
+					th:title="#{user.attr.email.pattern}" pattern=".+@.+\..{2,}"
+					required="required" th:placeholder="#{user.attr.email}"
+					th:field="*{email}" />
+				<input type="password" class="newuser-input" pattern=".{6,}"
+					th:title="#{user.attr.password.pattern}" required="required"
 					th:placeholder="#{user.attr.password}" th:field="*{password}" />
 				<ul class="ul-radio">
 					<li
@@ -58,11 +62,11 @@
 						<td th:text="${user.email}"></td>
 						<td th:text="${user.role}"></td>
 						<td><a href="#" th:text="#{core.edit}"
-							th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='edit')}">Edit</a></td>
+								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='edit')}">Edit</a></td>
 						<td><a href="#" th:text="#{core.view}"
-							th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='view')}">View</a></td>
+								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='view')}">View</a></td>
 						<td><a th:text="#{core.delete}"
-							th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='delete')}">Delete</a></td>
+								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='delete')}">Delete</a></td>
 					</tr>
 				</table>
 			</div>
@@ -76,19 +80,18 @@
 					th:text="${operation} == 'edit' ? #{user.management.form.edit} : #{user.management.form.view}"></h2>
 				<form th:object="${managedUser}"
 					th:action="@{/admin/userManagement/edit}" method="post">
-
-					<input type="text" class="newuser-input"
+					<input type="text" class="newuser-input" pattern=".{4,}"
+						th:title="#{user.attr.username.pattern}" required="required"
 						th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.username}" th:field="*{username}" />
-
 					<input type="text" class="newuser-input"
-						th:readonly="${operation == 'view'}"
+						th:title="#{user.attr.email.pattern}" pattern=".+@.+\..{2,}"
+						required="required" th:readonly="${operation == 'view'}"
 						th:placeholder="#{user.attr.email}" th:field="*{email}" />
-						
-					<input type="password" class="newuser-input"
+					<input type="password" class="newuser-input" pattern=".{6,}"
+						th:title="#{user.attr.password.pattern}"
 						th:if="${operation == 'edit'}"
 						th:placeholder="#{user.attr.password}" th:field="*{password}" />
-						
 					<ul class="ul-radio">
 						<li
 							th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
@@ -97,7 +100,7 @@
 							th:text="#{${roletype.key}}"></label>
 						</li>
 					</ul>
-					
+
 					<button type="submit" class="btn btn-default"
 						th:if="${operation == 'edit'}" th:text="#{core.edit}"></button>
 				</form>

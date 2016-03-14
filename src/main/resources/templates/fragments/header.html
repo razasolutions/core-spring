@@ -15,18 +15,13 @@
 					<div class="navbar-header">
 						<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
 						<ul class="nav navbar-nav">
-							<li><a href="#" th:href="@{/public/products}">Products</a></li>
-							<li><a href="#" th:href="@{/restricted/product/new}">Create
-									Product</a></li>
-							<li><a href="#" th:href="@{/restricted/hello}"
-								th:text="#{core.restricted}">Restricted</a></li>
 							<li><a href="#" th:href="@{/public/login}"
-								th:text="#{core.login}">Log-in</a></li>
-							<li sec:authorize="permitAll"><a href="#"
-								th:href="@{/admin/userManagement}">User Management</a></li>
+									th:text="#{core.login}">Log-in</a></li>
+							<li sec:authorize="hasAuthority('ROLE_RIGHT_SUPER')"><a
+									href="#" th:href="@{/admin/userManagement}">User Management</a></li>
 						</ul>
 					</div>
-					<div sec:authorize="isAuthenticated()" style="float:right">
+					<div sec:authorize="isAuthenticated()" style="float: right">
 						<p sec:authentication="principal.username"></p>
 					</div>
 				</div>
