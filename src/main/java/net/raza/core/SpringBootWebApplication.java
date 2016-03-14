@@ -32,7 +32,7 @@ public class SpringBootWebApplication  extends SpringBootServletInitializer {
      */
     @PostConstruct
     public void doEntityLoad() { 
-        entityLoader.doLoad();
+        entityLoader.load();
     }
     
 }

@@ -38,6 +38,8 @@ import net.raza.core.security.RoleAuthorities;
 @EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity<Long> implements UserDetails, CredentialsContainer {
 	
+	public final static Long SYSTEM_ID = 1L;
+	
     
     /** ---------------------- Entity Attributes ---------------- **/
 
@@ -58,13 +60,13 @@ public class User extends BaseEntity<Long> implements UserDetails, CredentialsCo
     
     public User() {
     	
-    	
     	this.role = RoleEnum.USER;
     	this.enabled = true;
     	this.accountNonExpired = true;
     	this.accountNonLocked = true;
     	this.credentialsNonExpired = true;
     	this.authorities = Collections.unmodifiableSet(sortAuthorities(RoleAuthorities.getAuthorities(this.role)));
+    	
     }
     
     

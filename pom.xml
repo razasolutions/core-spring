@@ -145,6 +145,19 @@
 		</dependency>
 
 
+		<!-- ********************************************** -->
+		<!-- Jadira User Types -->
+		<!-- Links Joda Time and Hibernate -->
+		<!-- ********************************************** -->
+		<dependency>
+			<groupId>org.jadira.usertype</groupId>
+			<artifactId>usertype.core</artifactId>
+			<version>3.2.0.GA</version>
+		</dependency>
+
+
+
+
 		<!-- Starter POMs are a set of convenient dependency descriptors that you -->
 		<!-- can include in your application. You get a one-stop-shop for all the -->
 		<!-- Spring and related technology that you need, without having to hunt -->

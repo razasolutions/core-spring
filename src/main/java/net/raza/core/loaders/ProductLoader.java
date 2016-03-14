@@ -17,7 +17,7 @@ public class ProductLoader {
 
 	private Logger log = Logger.getLogger(ProductLoader.class);
 
-	public void doLoad() {
+	public void load() {
 
 		if (!productService.listAllProducts().iterator().hasNext()) {
 

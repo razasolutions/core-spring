@@ -59,4 +59,14 @@ public class UserServiceImpl implements UserService {
 		userRepository.delete(id);
 	}
 
+	@Override
+	public void flush() {
+		userRepository.flush();
+	}
+
+	@Override
+	public Long count() {
+		return userRepository.count();
+	}
+
 }

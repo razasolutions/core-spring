@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"net.raza.core.models"})
-@EnableJpaRepositories(basePackages = {"net.raza.core.repositories"})
+@EntityScan
+@EnableJpaRepositories
 @EnableTransactionManagement
 public class RepositoryConfiguration {
 }

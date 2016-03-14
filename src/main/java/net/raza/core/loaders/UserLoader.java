@@ -17,9 +17,9 @@ public class UserLoader {
 
 	private Logger log = Logger.getLogger(UserLoader.class);
 
-	public void doLoad() {
+	public void load() {
 
-		if (!userService.findAll().iterator().hasNext()) {
+		if (userService.count() == 0) {
 
 			RoleEnum role = RoleEnum.SUPERADMIN;
 			User superAdmin = new User("razaadmin", "$2a$10$RwKfvN.2BFuKsjMy4s7EiOElBPrTVExHBPfe3VOau8P.shRcSL8gK", RoleAuthorities.getAuthorities(role));
@@ -27,6 +27,7 @@ public class UserLoader {
 			superAdmin.setEmail("superadmin@raza.net");
 			
 			userService.save(superAdmin);
+			userService.flush();
 
 			log.info("Saved Super Admin - id: " + superAdmin.getId());
 

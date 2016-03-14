@@ -11,10 +11,10 @@ public class EntityLoader {
 	@Autowired
 	private ProductLoader productLoader;
 
-	public void doLoad() {
+	public void load() {
 
-		userLoader.doLoad();
-		productLoader.doLoad();
+		userLoader.load();
+		productLoader.load();
 		
 	}
 }

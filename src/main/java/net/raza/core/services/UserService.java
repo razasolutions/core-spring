@@ -1,11 +1,11 @@
 package net.raza.core.services;
 
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import net.raza.core.models.User;
 
-@Component
+@Service
 public interface UserService {
 	
     Iterable<User> findAll();
@@ -21,5 +21,9 @@ public interface UserService {
 	void delete(Long id);
 
 	User update(User user);
+	
+	void flush();
+	
+	Long count();
     
 }
