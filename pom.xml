@@ -41,16 +41,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- ********************************************** -->
-		<!-- Spring DATA JPA: ElasticSearch Extension -->
-		<!-- starter configuration via Spring Boot -->
-		<!-- ********************************************** -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>
-				spring-boot-starter-data-elasticsearch
-			</artifactId>
-		</dependency>
 
 		<!-- ********************************************** -->
 		<!-- Spring Security: starter configuration via Spring Boot -->
@@ -67,6 +57,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+
 
 		<!-- ********************************************** -->
 		<!-- Spring WEB: starter configuration via Spring Boot -->
@@ -146,6 +137,16 @@
 
 
 		<!-- ********************************************** -->
+		<!-- Joda Time -->
+		<!-- ********************************************** -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+
+		<!-- ********************************************** -->
 		<!-- Jadira User Types -->
 		<!-- Links Joda Time and Hibernate -->
 		<!-- ********************************************** -->
@@ -155,9 +156,40 @@
 			<version>3.2.0.GA</version>
 		</dependency>
 
+		<!-- ********************************************** -->
+		<!-- Thymeleaf Layout Dialect -->
+		<!-- Adds support to decorated templates/layouts -->
+		<!-- ********************************************** -->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
+
+		<!-- ********************************************** -->
+		<!-- H2 Database. In-memory DB for Unit Tests -->
+		<!-- It is autoconfigurated by Spring Boot -->
+		<!-- ********************************************** -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- ********************************************** -->
+		<!-- Apache Commons Library                         -->
+		<!-- Provides useful *Utils classes                 -->
+		<!-- ********************************************** -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
 
 
 
+
+
+		<!-- ********** ABOUT SPRING BOOT ************************************** -->
 		<!-- Starter POMs are a set of convenient dependency descriptors that you -->
 		<!-- can include in your application. You get a one-stop-shop for all the -->
 		<!-- Spring and related technology that you need, without having to hunt -->

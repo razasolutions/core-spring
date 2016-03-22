@@ -4,7 +4,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
-import org.elasticsearch.common.joda.time.DateTime;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedBy;

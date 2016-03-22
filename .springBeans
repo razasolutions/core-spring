@@ -10,7 +10,7 @@
 		<config>java:net.raza.core.SpringBootWebApplication</config>
 	</configs>
 	<autoconfigs>
-		<config>java:net.raza.core.configuration.RepositoryConfiguration</config>
+		<config>java:net.raza.core.configurations.WebConfiguration</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
