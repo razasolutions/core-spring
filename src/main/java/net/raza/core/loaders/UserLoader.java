@@ -24,7 +24,7 @@ public class UserLoader {
 			RoleEnum role = RoleEnum.SUPERADMIN;
 			User superAdmin = new User();
 			superAdmin.setUsername("razaadmin");
-			superAdmin.setPassword("$2a$10$RwKfvN.2BFuKsjMy4s7EiOElBPrTVExHBPfe3VOau8P.shRcSL8gK");
+			superAdmin.setPassword("razapassword");
 			superAdmin.setRole(role);
 			superAdmin.setEmail("superadmin@raza.net");
 			
