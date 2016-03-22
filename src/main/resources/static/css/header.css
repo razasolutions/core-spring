@@ -1,4 +1,18 @@
 /* Classes */
 
+.inline-block {
+	display:inline-block;
+}
+
+.logout-anchor {
+	color: black;
+	display: block;
+}
+
+.userinfo-div {
+	float: right;
+	text-align: center;
+}
 
 /* IDs */
+

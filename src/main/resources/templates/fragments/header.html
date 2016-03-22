@@ -3,7 +3,6 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head lang="en">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="../css/header.css"></link>
 
 </head>
 <body>
@@ -21,8 +20,10 @@
 									href="#" th:href="@{/admin/userManagement}">User Management</a></li>
 						</ul>
 					</div>
-					<div sec:authorize="isAuthenticated()" style="float: right">
-						<p sec:authentication="principal.username"></p>
+					<div class="userinfo-div" sec:authorize="isAuthenticated()">
+						<p class="inline-block" th:text="#{core.hello}"></p>
+						<p class="inline-block" sec:authentication="principal.username"></p>
+						<a class="logout-anchor" th:href="@{/logout}" th:text="#{core.logout}"></a>
 					</div>
 				</div>
 			</nav>
