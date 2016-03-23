@@ -35,8 +35,8 @@
 <body>
 
 	<!-- Main navbar -->
-	<nav class="navbar navbar-default">
-		<div class="central-container">
+	<nav class="navbar navbar-inverse">
+		<div class="main-container">
 			<h1>---------------------------- NAVBAR
 				----------------------------</h1>
 		</div>
@@ -44,7 +44,7 @@
 
 	<!-- Main hero -->
 	<div class="hero">
-			<div class="central-container">
+		<div class="main-container">
 			<h2>---------------------------- HERO
 				----------------------------</h2>
 		</div>
@@ -54,15 +54,19 @@
 	<section layout:fragment="campaign"></section>
 
 
-	<section layout:fragment="content">
-		<p>Page content goes here. This is a dynamic element, so this
-			shall be replaced.</p>
+	<section>
+		<div layout:fragment="content" class="main-container main-content">
+			<p>Page content goes here. This is a dynamic element, so this
+				shall be replaced.</p>
+		</div>
 	</section>
 
 
 	<footer>
-		<p>---------------------------- FOOTER
-			----------------------------</p>
+		<div class="main-container">
+			<p>---------------------------- FOOTER
+				----------------------------</p>
+		</div>
 	</footer>
 </body>
 
