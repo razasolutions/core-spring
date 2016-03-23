@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 
 <!-- This is the application's main layout. Built using Thymeleaf's Layout Dialect -->
 
 
-<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">[Core
-	Spring]</title>
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"
+	th:text="#{core.title}">[Core Spring]</title>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -36,26 +37,34 @@
 
 	<!-- Main navbar -->
 	<nav class="navbar navbar-inverse">
-		<div class="main-container">
-			<h1>---------------------------- NAVBAR
-				----------------------------</h1>
+		<div class="main-container row">
+			<div class="navbar-header col-lg-9">
+				<a class="navbar-brand" href="../templates/" th:href="@{/}">Home</a>
+				<ul class="nav navbar-nav">
+					<li><a href="../templates/public/login.html"
+						th:href="@{/public/login}" th:text="#{core.login}">Log-in</a></li>
+					<li sec:authorize="hasAuthority('ROLE_RIGHT_SUPER')"><a
+						href="../templates/admin/userManagement.html"
+						th:href="@{/admin/userManagement}">User Management</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-3 pull-right" sec:authorize="isAuthenticated()">
+				<span th:text="#{core.hello} + ', '">Hello, </span>
+				<span sec:authentication="principal.username">username</span>
+				
+				<a class="logout-anchor" href="#" th:href="@{/logout}"
+					th:text="#{core.logout}"></a>
+			</div>
 		</div>
 	</nav>
 
-	<!-- Main hero -->
-	<div class="hero">
-		<div class="main-container">
-			<h2>---------------------------- HERO
-				----------------------------</h2>
-		</div>
-	</div>
 
 	<!-- Optional Campaign Slot -->
 	<section layout:fragment="campaign"></section>
 
 
 	<section>
-		<div layout:fragment="content" class="main-container main-content">
+		<div layout:fragment="content" class="main-content">
 			<p>Page content goes here. This is a dynamic element, so this
 				shall be replaced.</p>
 		</div>

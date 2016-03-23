@@ -6,7 +6,7 @@
 <title>Login</title>
 
 <link rel="stylesheet" type="text/css" href="../css/login.css"></link>
-    
+
 </head>
 <body>
 	<div class="container">
@@ -15,15 +15,19 @@
 			<fieldset id="login-fieldset">
 				<input type="hidden" th:name="${_csrf.parameterName}"
 					th:value="${_csrf.token}" />
-				<h2>Core</h2>
-				<p class="login-info" th:if="${param.error}" th:text="#{core.credentials.invalid}"></p>
 
-				<input class="login-input margin-auto-top" required="required" autofocus="autofocus"
-					th:placeholder="#{user.attr.username}" name="username" />
+				<h2>Core</h2>
+
+				<p class="login-info" th:if="${param.error}"
+					th:text="#{core.credentials.invalid}"></p>
+
 				<input class="login-input margin-auto-top" required="required"
-					th:placeholder="#{user.attr.password}" name="password"
-					type="password" />
-				<button id="login-button" type="submit" class="margin-auto-top" th:text="#{core.login}"></button>
+					autofocus="autofocus" th:placeholder="#{user.attr.username}"
+					name="username" /> <input class="login-input margin-auto-top"
+					required="required" th:placeholder="#{user.attr.password}"
+					name="password" type="password" />
+				<button id="login-button" type="submit" class="margin-auto-top"
+					th:text="#{core.login}"></button>
 			</fieldset>
 		</form>
 

@@ -11,7 +11,7 @@
 
 
 .main-content {
-	min-height: 300px;
+	min-height: 1000px;
 }
 
 
@@ -21,7 +21,7 @@
 	height: 540px;
 	margin-top: -20px;
 	background: url(../images/temporary-banner.jpg) bottom center;
-	background-size: 100% 100%;
+	background-size: cover;
 	padding-top: 250px;
 	color: blue;
 }
@@ -31,4 +31,10 @@ footer {
 	height: 150px;
 	display: block;
 	background-color: grey;
+}
+
+
+.logout-anchor {
+	color: black;
+	display: block;
 }
