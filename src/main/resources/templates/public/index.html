@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-
-    <title>Core Spring Boot Application - Index title</title>
-
-    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/main">
+	
+<head>
+<title>Welcome to Raza's Core Spring Application</title>
 </head>
-<body>
 
-<div class="container">
-    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-</div>
+<body>
+	<section layout:fragment="content">
+		<p>Paragraph was replaced!</p>
+	</section>
 </body>
+
 </html>

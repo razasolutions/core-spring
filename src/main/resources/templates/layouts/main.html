@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<!-- This is the application's main layout. Built using Thymeleaf's Layout Dialect -->
+
+
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">[Core
+	Spring]</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Common includes. -->
+<!-- Whenever another page extends this layout, those includes will be prepended to that page. -->
+
+<!-- Bootstrap CSS include -->
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+	rel="stylesheet" />
+
+<!-- JQuery include -->
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+
+<!-- Main CSS include -->
+<link href="../static/main.css" th:href="@{/css/main.css}"
+	rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<nav class="navbar navbar-default">
+		<div class="central-container">
+			<h1>---------------------------- NAVBAR
+				----------------------------</h1>
+		</div>
+	</nav>
+
+	<!-- Main hero -->
+	<div class="hero">
+			<div class="central-container">
+			<h2>---------------------------- HERO
+				----------------------------</h2>
+		</div>
+	</div>
+
+	<!-- Optional Campaign Slot -->
+	<section layout:fragment="campaign"></section>
+
+
+	<section layout:fragment="content">
+		<p>Page content goes here. This is a dynamic element, so this
+			shall be replaced.</p>
+	</section>
+
+
+	<footer>
+		<p>---------------------------- FOOTER
+			----------------------------</p>
+	</footer>
+</body>
+
+</html>
