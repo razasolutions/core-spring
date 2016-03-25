@@ -32,18 +32,24 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(User user) {
+		if (invalidUser(user)) return null;
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(BCRYPT_GENSALT_LOG_ROUNDS)));
 		return userRepository.save(user);
 	}
 
 	@Override
 	public User update(User user) {
+		if (user == null || user.getId() == null) return null;
+		
 		User existingUser = findById(user.getId());
+		if (existingUser == null) return null;
 		
 		if (StringUtils.isNotEmpty(user.getPassword()) && !BCrypt.checkpw(user.getPassword(), existingUser.getPassword())) {
+			if (invalidUser(user)) return null;
 			user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(BCRYPT_GENSALT_LOG_ROUNDS)));
 		} else {
 			user.setPassword(existingUser.getPassword());
+			if (invalidUser(user)) return null;
 		}
 		
 		return userRepository.save(user);
@@ -67,6 +73,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Long count() {
 		return userRepository.count();
+	}
+	
+	public boolean invalidUser(User user){
+		if (user == null || user.getUsername() == null || user.getEmail() == null || user.getRole() == null || user.getPassword() == null) return true;
+		if (user.getUsername().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty()) return true;
+		if (user.getUsername().length() < 4) return true;
+		if (user.getPassword().length() < 6) return true;
+		if (!user.getEmail().matches(".+@.+[.].{2,}")) return true;
+		return false;
 	}
 
 }

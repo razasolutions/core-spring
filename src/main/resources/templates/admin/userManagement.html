@@ -34,7 +34,8 @@
 				<ul class="ul-radio">
 					<li
 						th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
-						<input type="radio" th:field="*{role}" th:value="${roletype}" />
+						<input type="radio" th:field="*{role}" th:value="${roletype}" 
+							required="required"/>
 						<label th:text="#{${roletype.key}}"></label>
 					</li>
 				</ul>

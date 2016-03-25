@@ -25,5 +25,7 @@ public interface UserService {
 	void flush();
 	
 	Long count();
+	
+	public boolean invalidUser(User user);
     
 }
