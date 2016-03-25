@@ -6,26 +6,26 @@
 
 <!-- This is the application's main layout. Built using Thymeleaf's Layout Dialect -->
 
-
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"
 	th:text="#{core.title}">[Core Spring]</title>
 
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<!-- Common includes. -->
-<!-- Whenever another page extends this layout, those includes will be prepended to that page. -->
+<!-- Common CSS includes. -->
+<!-- OBS: Whenever another page extends this layout, those includes will be prepended to that page. -->
+<!-- OBS: JavaScript includes after the <body> tag -->
 
-<!-- Bootstrap CSS include -->
+<!-- Bootstrap CSS include and Meta configuration -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link
-	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-	th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
-	rel="stylesheet" />
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous" />
 
-<!-- JQuery include -->
-<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-	th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 <!-- Main CSS include -->
 <link href="../static/main.css" th:href="@{/css/main.css}"
@@ -35,28 +35,80 @@
 
 <body>
 
-	<!-- Main navbar -->
-	<nav class="navbar navbar-inverse">
-		<div class="main-container row">
-			<div class="navbar-header col-lg-9">
-				<a class="navbar-brand" href="../templates/" th:href="@{/}">Home</a>
-				<ul class="nav navbar-nav">
-					<li><a href="../templates/public/login.html"
-						th:href="@{/public/login}" th:text="#{core.login}">Log-in</a></li>
-					<li sec:authorize="hasAuthority('ROLE_RIGHT_SUPER')"><a
-						href="../templates/admin/userManagement.html"
-						th:href="@{/admin/userManagement}">User Management</a></li>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+
+				<!-- Navbar Menu-toggling button -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<!-- Span for screen readers -->
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<!-- Leftmost brand presentation -->
+				<a class="navbar-brand" href="../templates/" th:href="@{/}">Core
+					Spring</a>
+
+			</div>
+
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+
+					<li>
+						<a href="../templates/public/login.html"
+							th:href="@{/public/login}" th:text="#{core.login}">Log-in</a>
+					</li>
+
+					<li sec:authorize="hasAuthority('ROLE_RIGHT_SUPER')">
+						<a href="../templates/admin/userManagement.html"
+							th:href="@{/admin/userManagement}">User Management</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							Themes
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Admin &amp; Dashboard</li>
+							<li>
+								<a href="#">Admin 1</a>
+							</li>
+							<li>
+								<a href="#">Admin 2</a>
+							</li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Portfolio</li>
+							<li>
+								<a href="#">Portfolio 1</a>
+							</li>
+							<li>
+								<a href="#">Portfolio 2</a>
+							</li>
+						</ul>
+					</li>
+
+
+					<li sec:authorize="isAuthenticated()">
+						<div class="navbar-sessionpanel">
+							<span th:text="#{core.hello} + ', ' + ${username}">Hello,
+								username!</span>
+							<a id="logout-anchor" href="#" th:href="@{/logout}"
+								th:text="#{core.logout}">Logout</a>
+						</div>
+					</li>
+
 				</ul>
 			</div>
-			<div class="col-lg-3 pull-right" sec:authorize="isAuthenticated()">
-				<span th:text="#{core.hello} + ', '">Hello, </span>
-				<span sec:authentication="principal.username">username</span>
-				
-				<a class="logout-anchor" href="#" th:href="@{/logout}"
-					th:text="#{core.logout}"></a>
-			</div>
+
+
 		</div>
-	</nav>
+	</div>
 
 
 	<!-- Optional Campaign Slot -->
@@ -72,11 +124,23 @@
 
 
 	<footer>
-		<div class="main-container">
+		<div class="container">
 			<p>---------------------------- FOOTER
 				----------------------------</p>
 		</div>
 	</footer>
+
+	<!-- JQuery include -->
+	<script src="https://code.jquery.com/jquery-2.2.2.min.js"
+		integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+		crossorigin="anonymous"></script>
+
+	<!-- Bootstrap JS include -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+
 </body>
 
 </html>

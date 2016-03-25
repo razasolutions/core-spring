@@ -89,15 +89,6 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- ********************************************** -->
-		<!-- Bootstrap WebJar: allows for Bootstrap CSS Framework -->
-		<!-- use natively inside the application. No CDN is needed -->
-		<!-- ********************************************** -->
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>3.3.4</version>
-		</dependency>
 
 		<!-- ********************************************** -->
 		<!-- MySQL Database Connector. -->
@@ -187,8 +178,6 @@
 
 
 
-
-
 		<!-- ********** ABOUT SPRING BOOT ************************************** -->
 		<!-- Starter POMs are a set of convenient dependency descriptors that you -->
 		<!-- can include in your application. You get a one-stop-shop for all the -->
@@ -197,6 +186,8 @@
 		<!-- For example, if you want to get started using Spring and JPA for -->
 		<!-- database access, just include the spring-boot-starter-data-jpa -->
 		<!-- dependency in your project, and you are good to go. -->
+		
+		
 
 	</dependencies>
 
