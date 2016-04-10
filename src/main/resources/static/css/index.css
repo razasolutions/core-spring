@@ -1,0 +1,11 @@
+
+.hero {
+	width: 100%;
+	display: block;
+	height: 540px;
+	margin-top: -20px;
+	background: url(../images/temporary-banner.jpg) bottom center;
+	background-size: cover;
+	padding-top: 250px;
+	color: blue;
+}

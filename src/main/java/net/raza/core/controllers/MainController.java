@@ -20,4 +20,5 @@ public class MainController {
     String denied(){
         return "public/denied";
     }
+    
 }

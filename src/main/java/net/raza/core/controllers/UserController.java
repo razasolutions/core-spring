@@ -23,7 +23,7 @@ public class UserController {
 
 	private final String PATH = "/admin";
 
-	@RequestMapping(value = PATH + "/userManagement", method = RequestMethod.GET)
+	@RequestMapping(value = PATH + "/user-management", method = RequestMethod.GET)
 	public String listUsers(Model model) {
 		
 		model.addAttribute("users", userService.findAll());
@@ -32,51 +32,51 @@ public class UserController {
 			model.addAttribute("managedUser", new User());
 		}
 		
-		return PATH + "/userManagement";
+		return PATH + "/user-management";
 		
 	}
 
-	@RequestMapping(value = PATH + "/userManagement/add", method = RequestMethod.POST)
+	@RequestMapping(value = PATH + "/user-management/add", method = RequestMethod.POST)
 	public String addUser(User newUser) {
 		
 		userService.save(newUser);
 		// TODO: add a success message into Flash context;
 		// TODO: maybe check for authentication here?
-		return "redirect:" + PATH + "/userManagement";
+		return "redirect:" + PATH + "/user-management";
 		
 	}
 
-	@RequestMapping(value = PATH + "/userManagement/edit", method = RequestMethod.POST)
+	@RequestMapping(value = PATH + "/user-management/edit", method = RequestMethod.POST)
 
 	public String editUser(@ModelAttribute("managedUser") User managedUser, BindingResult result) {
 		userService.update(managedUser);
 		// TODO: add a success message into Flash context;
 		// TODO: maybe check for authentication here?
-		return "redirect:" + PATH + "/userManagement";
+		return "redirect:" + PATH + "/user-management";
 	}
 
-	@RequestMapping(value = PATH + "/userManagement/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = PATH + "/user-management/delete/{id}", method = RequestMethod.GET)
 	public String deleteUser(@PathVariable Long id) {
 		userService.delete(id);
 		// TODO: add a success message into Flash context;
 		// TODO: maybe check for authentication here?
-		return "redirect:" + PATH + "/userManagement";
+		return "redirect:" + PATH + "/user-management";
 	}
 
-	@RequestMapping(value = PATH + "/userManagement/manage/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = PATH + "/user-management/manage/{id}", method = RequestMethod.GET)
 	public String manageUser(@PathVariable Long id,
 			@RequestParam(value = "operation", required = true) String operation, Model model) {
 		
 		model.addAttribute("managedUser", userService.findById(id));
 		if (operation.equals("delete")) {
-			return "redirect:" + PATH + "/userManagement#deleteDialog";
+			return "redirect:" + PATH + "/user-management#deleteDialog";
 		}
 		model.addAttribute("operation", operation);
 		// TODO: handle modal Dialog opening with a Flash attribute instead of
 		// with #userDialog
 		// it's better to handle modal dialog opening via Flash (because of page
 		// updating (F5) and back/forward issues).
-		return "redirect:" + PATH + "/userManagement#userDialog";
+		return "redirect:" + PATH + "/user-management#userDialog";
 	}
 
 }

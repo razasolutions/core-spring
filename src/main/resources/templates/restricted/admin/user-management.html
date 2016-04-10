@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/admin-panel">
 
-<head lang="en">
+<head>
+<title>Welcome to Raza's Core Spring Application</title>
 
-<title th:text="#{user.management.title}"></title>
-
-<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
-<link rel="stylesheet" type="text/css"
-	href="../static/css/usermanagement.css"
-	th:href="@{/css/usermanagement.css}"></link>
-
+<!-- Specific CSS include -->
+<link href="../static/css/user-management.css" th:href="@{/css/user-management.css}"
+	rel="stylesheet" />
 </head>
+
 <body>
-	<div class="container">
-		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+	<section layout:fragment="content">
 
 		<!-- User create form -->
 		<div class="div-form">
@@ -34,8 +32,8 @@
 				<ul class="ul-radio">
 					<li
 						th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
-						<input type="radio" th:field="*{role}" th:value="${roletype}" 
-							required="required"/>
+						<input type="radio" th:field="*{role}" th:value="${roletype}"
+							required="required" />
 						<label th:text="#{${roletype.key}}"></label>
 					</li>
 				</ul>
@@ -62,12 +60,18 @@
 						<td th:text="${user.username}"></td>
 						<td th:text="${user.email}"></td>
 						<td th:text="${user.role}"></td>
-						<td><a href="#" th:text="#{core.edit}"
-								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='edit')}">Edit</a></td>
-						<td><a href="#" th:text="#{core.view}"
-								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='view')}">View</a></td>
-						<td><a th:text="#{core.delete}"
-								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='delete')}">Delete</a></td>
+						<td>
+							<a href="#" th:text="#{core.edit}"
+								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='edit')}">Edit</a>
+						</td>
+						<td>
+							<a href="#" th:text="#{core.view}"
+								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='view')}">View</a>
+						</td>
+						<td>
+							<a th:text="#{core.delete}"
+								th:href="@{/admin/userManagement/manage/{id}(id=${user.id}, operation='delete')}">Delete</a>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -97,8 +101,8 @@
 						<li
 							th:each="roletype : ${T(net.raza.core.enums.RoleEnum).values()}">
 							<input type="radio" th:field="*{role}" th:value="${roletype}"
-								th:disabled="${operation == 'view'}" /> <label
-							th:text="#{${roletype.key}}"></label>
+								th:disabled="${operation == 'view'}" />
+							<label th:text="#{${roletype.key}}"></label>
 						</li>
 					</ul>
 
@@ -122,6 +126,7 @@
 			</div>
 		</div>
 
-	</div>
+	</section>
 </body>
+
 </html>

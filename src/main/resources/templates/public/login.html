@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:spring="http://www.springframework.org/tags">
-<head lang="en">
+<head>
 
 <title>Login</title>
 
-<link rel="stylesheet" type="text/css" href="../css/login.css"></link>
+<link rel="stylesheet" type="text/css" href="../static/css/login.css" th:href="@{/css/login.css}"></link>
 
 </head>
+
 <body>
 	<div class="container">
 		<form class="form-horizontal" th:action="@{/public/login}"
@@ -27,7 +28,7 @@
 					required="required" th:placeholder="#{user.attr.password}"
 					name="password" type="password" />
 				<button id="login-button" type="submit" class="margin-auto-top"
-					th:text="#{core.login}"></button>
+					th:text="#{core.login}">Log-in</button>
 			</fieldset>
 		</form>
 

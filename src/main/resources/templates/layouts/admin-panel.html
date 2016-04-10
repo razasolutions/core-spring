@@ -4,7 +4,8 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 
-<!-- This is the application's main layout. Built using Thymeleaf's Layout Dialect -->
+<!-- This is the application's admin-panel layout. Built using Thymeleaf's Layout Dialect -->
+<!-- Reference: http://flatfull.com/themes/flatkit/html/dashboard.html -->
 
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"
 	th:text="#{core.title}">[Core Spring]</title>
@@ -37,7 +38,7 @@
 
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse" role="navigation">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="navbar-header">
 
 				<!-- Navbar Menu-toggling button -->
@@ -65,8 +66,8 @@
 					</li>
 
 					<li sec:authorize="hasAuthority('ROLE_RIGHT_SUPER')">
-						<a href="../templates/restricted/admin/user-management.html"
-							th:href="@{restricted/admin/user-management}">User Management</a>
+						<a href="../templates/admin/userManagement.html"
+							th:href="@{/admin/userManagement}">User Management</a>
 					</li>
 
 					<li class="dropdown">
@@ -96,7 +97,6 @@
 
 					<li sec:authorize="isAuthenticated()">
 						<div class="navbar-sessionpanel">
-							<i class="fa fa-user"></i>
 							<span th:text="#{core.hello} + ', ' + ${username}">Hello,
 								username!</span>
 							<a id="logout-anchor" href="#" th:href="@{/logout}"
@@ -112,10 +112,6 @@
 	</div>
 
 
-	<!-- Optional Campaign Slot -->
-	<section layout:fragment="campaign"></section>
-
-
 	<section>
 		<div layout:fragment="content" class="main-content">
 			<p>Page content goes here. This is a dynamic element, so this
@@ -124,12 +120,7 @@
 	</section>
 
 
-	<footer>
-		<div class="container">
-			<p>---------------------------- FOOTER
-				----------------------------</p>
-		</div>
-	</footer>
+
 
 	<!-- JQuery include -->
 	<script src="https://code.jquery.com/jquery-2.2.2.min.js"
